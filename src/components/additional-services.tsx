@@ -112,7 +112,7 @@ export default function AdditionalServices() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, type: "spring" }}
-          className="relative mt-68 mb-16"
+          className="relative   mt-24 md:mt-68  mb-16"
         >
           <div className="bg-[#1e2345] rounded-3xl p-8 md:p-12 lg:px-16 overflow-visible relative">
             {/* Background Decoration (Abstract curves) */}

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import ServiceCard from "./service-card";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, useMotionValue } from "framer-motion";
 
 const services = [
   {
@@ -40,6 +40,12 @@ const container: Variants = {
 
 export default function Services() {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const dragX = useMotionValue(0);
+
+  const handleDotClick = (index: number) => {
+    dragX.set(0); // Reset drag position
+    setCurrentSlide(index);
+  };
 
   return (
     <section className="py-12 md:py-20 lg:py-24 bg-white overflow-hidden">
@@ -65,29 +71,39 @@ export default function Services() {
 
         {/* Mobile Carousel */}
         <div className="md:hidden relative">
-          <div className="overflow-hidden">
+          <div className="overflow-hidden -mx-4 px-4">
             <motion.div
               className="flex"
+              style={{ x: dragX }}
               animate={{ x: `-${currentSlide * 100}%` }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.2}
+              dragElastic={0.1}
+              onDragStart={() => {
+                dragX.set(0);
+              }}
               onDragEnd={(e, { offset, velocity }) => {
-                const swipe = Math.abs(offset.x) * velocity.x;
-                if (swipe < -10000) {
-                  // Swipe left
-                  setCurrentSlide((prev) =>
-                    prev < services.length - 1 ? prev + 1 : prev
-                  );
-                } else if (swipe > 10000) {
-                  // Swipe right
-                  setCurrentSlide((prev) => (prev > 0 ? prev - 1 : prev));
+                const swipe = offset.x * velocity.x;
+
+                // Swipe left (next slide)
+                if (swipe < -500 || offset.x < -100) {
+                  if (currentSlide < services.length - 1) {
+                    setCurrentSlide(currentSlide + 1);
+                  }
                 }
+                // Swipe right (previous slide)
+                else if (swipe > 500 || offset.x > 100) {
+                  if (currentSlide > 0) {
+                    setCurrentSlide(currentSlide - 1);
+                  }
+                }
+
+                dragX.set(0);
               }}
             >
               {services.map((service, index) => (
-                <div key={index} className="w-full flex-shrink-0 px-2">
+                <div key={index} className="w-full flex-shrink-0 px-4">
                   <ServiceCard {...service} />
                 </div>
               ))}
@@ -99,9 +115,9 @@ export default function Services() {
             {services.map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  currentSlide === index ? "bg-accent w-8" : "bg-gray-300"
+                onClick={() => handleDotClick(index)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  currentSlide === index ? "bg-accent w-8" : "bg-gray-300 w-2"
                 }`}
                 aria-label={`Ir a slide ${index + 1}`}
               />
