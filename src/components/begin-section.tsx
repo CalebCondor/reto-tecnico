@@ -50,14 +50,14 @@ export default function BeginSection() {
   return (
     <div className="flex flex-col w-full overflow-hidden">
       {/* Top Section - White Background */}
-      <section className="bg-white pt-16 md:pt-24 pb-12 px-4 relative z-10">
+      <section className="bg-white pt-8 md:pt-24 pb-6 md:pb-12 px-4 relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12 md:mb-16"
+            className="text-center mb-6 md:mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold text-navy mb-4">
               Comience con certeza
@@ -69,14 +69,14 @@ export default function BeginSection() {
           </motion.div>
 
           {/* Timeline Card - Floating overlaps spacing */}
-          <div className="bg-white rounded-[2.5rem] shadow-2xl border border-gray-100 p-8 md:p-12 max-w-5xl mx-auto relative z-20 mb-[-100px] md:mb-[-140px]">
+          <div className="bg-white rounded-2xl md:rounded-[2.5rem] shadow-none md:shadow-2xl border border-gray-100 p-4 md:p-12 max-w-5xl mx-auto relative z-20 mb-6 md:mb-[-140px]">
             {/* Timeline Steps */}
             <motion.div
               variants={timelineContainer}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-100px" }}
-              className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 mb-8 md:mb-12 relative"
+              className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-8 mb-4 md:mb-12 relative"
             >
               {/* Connecting Line (Desktop) */}
               <motion.div
@@ -186,7 +186,7 @@ export default function BeginSection() {
       </section>
 
       {/* Bottom Section - Navy Background */}
-      <section className="bg-navy pt-40 md:pt-56 pb-24 px-4 relative z-0">
+      <section className="bg-navy pt-20 md:pt-56 pb-24 px-4 relative z-0">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0 }}
