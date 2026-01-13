@@ -74,11 +74,7 @@ export default function ServiceCard({
       className="bg-white rounded-xl border-2 border-navy-light p-8 hover:shadow-2xl transition-shadow cursor-pointer"
     >
       {/* Icon */}
-      <motion.div
-        whileHover={{ rotate: 360 }}
-        transition={{ duration: 0.6 }}
-        className="mb-6"
-      >
+      <motion.div className="mb-6">
         <Image
           src={icon}
           alt={title}
