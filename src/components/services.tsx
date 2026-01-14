@@ -80,12 +80,21 @@ export default function Services() {
               dragMomentum={false}
               dragElastic={0}
               animate={{ x: `-${currentSlide * 100}%` }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              onDragEnd={(e, { offset }) => {
-                // Solo nos basamos en la distancia recorrida para el cambio
-                if (offset.x < -100) {
+              transition={{ type: "spring", stiffness: 400, damping: 40 }}
+              onDragEnd={(e, { offset, velocity }) => {
+                // Umbral de sensibilidad (distancia mínima o velocidad de 'flick')
+                const swipeThreshold = 30;
+                const velocityThreshold = 500;
+
+                if (
+                  offset.x < -swipeThreshold ||
+                  velocity.x < -velocityThreshold
+                ) {
                   nextSlide();
-                } else if (offset.x > 100) {
+                } else if (
+                  offset.x > swipeThreshold ||
+                  velocity.x > velocityThreshold
+                ) {
                   prevSlide();
                 }
               }}
