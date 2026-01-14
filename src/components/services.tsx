@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import ServiceCard from "./service-card";
 import { motion, Variants } from "framer-motion";
 
@@ -41,6 +41,14 @@ const container: Variants = {
 export default function Services() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % services.length);
+  }, []);
+
+  const prevSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev === 0 ? services.length - 1 : prev - 1));
+  }, []);
+
   return (
     <section className="py-12 md:py-20 lg:py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-8">
@@ -67,24 +75,22 @@ export default function Services() {
         <div className="md:hidden relative">
           <div className="overflow-hidden -mx-4 px-4">
             <motion.div
-              className="flex"
+              className="flex cursor-grab active:cursor-grabbing"
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.2}
+              dragElastic={0.8}
               animate={{ x: `-${currentSlide * 100}%` }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               onDragEnd={(e, { offset, velocity }) => {
                 const swipe = offset.x * velocity.x;
 
-                // Umbral de swipe o distancia recorrida
-                if (swipe < -500 || offset.x < -100) {
-                  if (currentSlide < services.length - 1) {
-                    setCurrentSlide(currentSlide + 1);
-                  }
-                } else if (swipe > 500 || offset.x > 100) {
-                  if (currentSlide > 0) {
-                    setCurrentSlide(currentSlide - 1);
-                  }
+                // Si arrastramos a la izquierda (siguiente)
+                if (swipe < -200 || offset.x < -80) {
+                  nextSlide();
+                }
+                // Si arrastramos a la derecha (anterior)
+                else if (swipe > 200 || offset.x > 80) {
+                  prevSlide();
                 }
               }}
             >
