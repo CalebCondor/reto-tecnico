@@ -77,19 +77,15 @@ export default function Services() {
             <motion.div
               className="flex cursor-grab active:cursor-grabbing"
               drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.8}
+              dragMomentum={false}
+              dragElastic={0}
               animate={{ x: `-${currentSlide * 100}%` }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              onDragEnd={(e, { offset, velocity }) => {
-                const swipe = offset.x * velocity.x;
-
-                // Si arrastramos a la izquierda (siguiente)
-                if (swipe < -200 || offset.x < -80) {
+              onDragEnd={(e, { offset }) => {
+                // Solo nos basamos en la distancia recorrida para el cambio
+                if (offset.x < -100) {
                   nextSlide();
-                }
-                // Si arrastramos a la derecha (anterior)
-                else if (swipe > 200 || offset.x > 80) {
+                } else if (offset.x > 100) {
                   prevSlide();
                 }
               }}
