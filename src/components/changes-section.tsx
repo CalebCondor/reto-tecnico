@@ -69,7 +69,7 @@ export default function ChangesSection() {
             <div className="order-1 lg:order-2">
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="relative h-64 md:h-80 lg:h-96 w-full rounded-3xl overflow-hidden shadow-lg"
+                className="relative h-64 md:h-80 lg:h-96 w-full rounded-3xl overflow-hidden"
               >
                 <Image
                   src="/hero.png"
@@ -94,7 +94,7 @@ export default function ChangesSection() {
             <div className="order-1">
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="relative h-64 md:h-80 lg:h-96 w-full rounded-3xl overflow-hidden shadow-lg"
+                className="relative h-64 md:h-80 lg:h-96 w-full rounded-3xl overflow-hidden"
               >
                 <Image
                   src="/hero.png"

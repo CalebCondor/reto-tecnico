@@ -112,7 +112,7 @@ export default function AdditionalServices() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, type: "spring" }}
-          className="relative   mt-24 md:mt-68  mb-16"
+          className="relative mt-12 md:mt-64 lg:mt-68 mb-16"
         >
           <div className="bg-[#1e2345] rounded-3xl p-8 md:p-12 lg:px-16 overflow-visible relative">
             {/* Background Decoration (Abstract curves) */}
@@ -139,8 +139,8 @@ export default function AdditionalServices() {
                 </motion.div>
               </div>
 
-              {/* Mobile Image (Just inline) */}
-              <div className="block lg:hidden w-full mb-8 -mt-20">
+              {/* Mobile Image (Just inline) - Hidden on mobile/tablet as requested */}
+              <div className="hidden w-full mb-8 -mt-20">
                 <motion.div
                   initial={{ y: 50, opacity: 0 }}
                   whileInView={{ y: 0, opacity: 1 }}
