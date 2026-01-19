@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { motion, Variants } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 const listContainer = {
   hidden: { opacity: 0 },
@@ -42,6 +43,8 @@ const testimonialItem: Variants = {
 };
 
 export default function AdditionalServices() {
+  const { t } = useLanguage();
+
   return (
     <section className="bg-white py-12 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-8 overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -55,12 +58,10 @@ export default function AdditionalServices() {
             className="flex flex-col items-start text-left"
           >
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-navy">
-              Servicios adicionales
+              {t("services_title")}
             </h2>
             <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed">
-              Nuestros abogados especializados le ofrecen representación experta
-              frente a los desafíos más complejos con el IRS y las autoridades
-              de inmigración.
+              {t("services_description")}
             </p>
 
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -68,7 +69,7 @@ export default function AdditionalServices() {
                 variant="outline"
                 className="border-2 border-navy text-navy hover:bg-navy hover:text-white font-bold rounded-full px-8 py-6 text-base"
               >
-                Agendar consulta
+                {t("services_button")}
               </Button>
             </motion.div>
           </motion.div>
@@ -83,13 +84,13 @@ export default function AdditionalServices() {
               className="space-y-4 text-sm md:text-base text-gray-700"
             >
               {[
-                "Representación en vistas sobre embargos.",
-                "Negociación de gravámenes.",
-                "Representación ante el US Tax Court.",
-                "Representación ante el US Board of Immigration.",
-                "Solicitud de perdón de penalidades.",
-                "Representación en casos de robo de identidad contributiva.",
-                "Ofertas en compromiso para negociar el monto de la deuda.",
+                t("service_1"),
+                t("service_2"),
+                t("service_3"),
+                t("service_4"),
+                t("service_5"),
+                t("service_6"),
+                t("service_7"),
               ].map((item, index) => (
                 <motion.li
                   variants={listItem}
@@ -157,11 +158,10 @@ export default function AdditionalServices() {
               {/* Content */}
               <div className="lg:w-7/12 lg:ml-auto relative z-10 text-center lg:text-left pl-0 lg:pl-12">
                 <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
-                  Verificación de elegibilidad gratuita de 15 minutos
+                  {t("promo_title")}
                 </h3>
                 <p className="text-gray-300 text-sm md:text-base mb-8 max-w-xl mx-auto lg:mx-0">
-                  Descubra si califica y qué obstáculos podrían estar en su
-                  camino antes de gastar un dólar.
+                  {t("promo_description")}
                 </p>
                 <motion.div
                   whileHover={{ scale: 1.05 }}
@@ -169,7 +169,7 @@ export default function AdditionalServices() {
                   className="inline-block"
                 >
                   <Button className="border-white border-2 text-white rounded-full px-8 py-6 text-base font-semibold transition-all">
-                    Consultar ahora
+                    {t("promo_button")}
                   </Button>
                 </motion.div>
               </div>
@@ -185,10 +185,10 @@ export default function AdditionalServices() {
           className="text-center mb-12 md:mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-navy mb-2">
-            Clientes <span className="text-accent">satisfechos</span>
+            {t("testimonials_title_1")} <span className="text-accent">{t("testimonials_title_2")}</span>
           </h2>
           <h3 className="text-3xl md:text-5xl font-bold text-navy">
-            confían en Puente Legal
+            {t("testimonials_title_3")}
           </h3>
         </motion.div>
 

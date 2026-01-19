@@ -4,9 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   return (
     <header className="sticky top-0 z-50 bg-navy border-b border-navy-dark">
@@ -23,38 +25,48 @@ export default function Header() {
               href="#"
               className="text-white hover:text-accent transition-colors text-sm font-medium"
             >
-              Home
+              {t("nav_home")}
             </Link>
             <Link
               href="#"
               className="text-white hover:text-accent transition-colors text-sm font-medium"
             >
-              Services
+              {t("nav_services")}
             </Link>
             <Link
               href="#"
               className="text-white hover:text-accent transition-colors text-sm font-medium"
             >
-              Pricing
+              {t("nav_pricing")}
             </Link>
             <Link
               href="#"
               className="text-white hover:text-accent transition-colors text-sm font-medium"
             >
-              About
+              {t("nav_about")}
             </Link>
             <Link
               href="#"
               className="text-white hover:text-accent transition-colors text-sm font-medium"
             >
-              Contacto
+              {t("nav_contact")}
             </Link>
             <div className="flex items-center gap-3 pl-8 border-l border-navy-dark">
-              <button className="text-white text-sm font-medium hover:text-accent transition-colors">
+              <button
+                onClick={() => setLanguage("es")}
+                className={`text-sm font-medium transition-colors ${
+                  language === "es" ? "text-accent" : "text-white hover:text-accent"
+                }`}
+              >
                 ES
               </button>
               <span className="text-gray-400">/</span>
-              <button className="text-white text-sm font-medium hover:text-accent transition-colors">
+              <button
+                onClick={() => setLanguage("en")}
+                className={`text-sm font-medium transition-colors ${
+                  language === "en" ? "text-accent" : "text-white hover:text-accent"
+                }`}
+              >
                 EN
               </button>
             </div>
@@ -76,38 +88,48 @@ export default function Header() {
               href="#"
               className="block text-white hover:text-accent transition-colors text-sm font-medium"
             >
-              Home
+              {t("nav_home")}
             </Link>
             <Link
               href="#"
               className="block text-white hover:text-accent transition-colors text-sm font-medium"
             >
-              Services
+              {t("nav_services")}
             </Link>
             <Link
               href="#"
               className="block text-white hover:text-accent transition-colors text-sm font-medium"
             >
-              Pricing
+              {t("nav_pricing")}
             </Link>
             <Link
               href="#"
               className="block text-white hover:text-accent transition-colors text-sm font-medium"
             >
-              About
+              {t("nav_about")}
             </Link>
             <Link
               href="#"
               className="block text-white hover:text-accent transition-colors text-sm font-medium"
             >
-              Contacto
+              {t("nav_contact")}
             </Link>
             <div className="flex items-center gap-3 pt-3 border-t border-navy-dark">
-              <button className="text-white text-sm font-medium hover:text-accent transition-colors">
+              <button
+                onClick={() => setLanguage("es")}
+                className={`text-sm font-medium transition-colors ${
+                  language === "es" ? "text-accent" : "text-white hover:text-accent"
+                }`}
+              >
                 ES
               </button>
               <span className="text-gray-400">/</span>
-              <button className="text-white text-sm font-medium hover:text-accent transition-colors">
+              <button
+                onClick={() => setLanguage("en")}
+                className={`text-sm font-medium transition-colors ${
+                  language === "en" ? "text-accent" : "text-white hover:text-accent"
+                }`}
+              >
                 EN
               </button>
             </div>

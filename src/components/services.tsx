@@ -3,30 +3,8 @@
 import { useState, useCallback } from "react";
 import ServiceCard from "./service-card";
 import { motion, Variants } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
-const services = [
-  {
-    icon: "/Group 19.png",
-    title: "Realizamos su Background Check",
-    description:
-      "Importante para conocer y corregir cualquiera de los errores que pudiera haber declarado. Nosotros revisaremos todo en detalle.",
-    isFirst: true,
-  },
-  {
-    icon: "/Group 8.png",
-    title: "Analizamos sus Impuestos",
-    description:
-      "Osbert tales afecta su solicitud. Analizamos la situación y gestiones fiscales para asegurar los estándares.",
-    isFirst: false,
-  },
-  {
-    icon: "/Group 9.png",
-    title: "Te Preparamos para al Examen",
-    description:
-      "Nuestro sistema único de aprendizaje en línea le permite para pasar con éxito su examen de ciudadanía.",
-    isFirst: false,
-  },
-];
 
 const container: Variants = {
   hidden: { opacity: 0 },
@@ -39,7 +17,29 @@ const container: Variants = {
 };
 
 export default function Services() {
+  const { t } = useLanguage();
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  const services = [
+    {
+      icon: "/Group 19.png",
+      title: t("service_card_1_title"),
+      description: t("service_card_1_desc"),
+      isFirst: true,
+    },
+    {
+      icon: "/Group 8.png",
+      title: t("service_card_2_title"),
+      description: t("service_card_2_desc"),
+      isFirst: false,
+    },
+    {
+      icon: "/Group 9.png",
+      title: t("service_card_3_title"),
+      description: t("service_card_3_desc"),
+      isFirst: false,
+    },
+  ];
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev + 1) % services.length);
@@ -61,13 +61,11 @@ export default function Services() {
           className="flex flex-col lg:flex-row items-start lg:items-end justify-between gap-6 mb-12 lg:mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-navy max-w-2xl leading-tight">
-            Nuestro enfoque <span className="text-accent">360</span>
-            <br className="hidden lg:block" /> cubre todas las áreas
+            {t("services_360_title_1")} <span className="text-accent">{t("services_360_title_accent")}</span>
+            {t("services_360_title_2")}
           </h2>
           <p className="text-gray-500 text-sm md:text-base max-w-lg">
-            Miles de solicitudes son denegadas por no poder probar "Good Moral
-            Character" que va desde tener un record criminal hasta no haber
-            declarado impuestos. Nos encargamos de verificar todo.
+            {t("services_360_description")}
           </p>
         </motion.div>
 

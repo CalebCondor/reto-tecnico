@@ -5,6 +5,7 @@ import ContactModal from "@/components/contact-modal";
 import { Button } from "@/components/ui/button";
 import { FileText, Shield } from "lucide-react";
 import { motion, Variants } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 const timelineContainer = {
   hidden: { opacity: 0 },
@@ -47,6 +48,7 @@ const packageItem: Variants = {
 
 export default function BeginSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { t } = useLanguage();
   return (
     <div className="flex flex-col w-full overflow-hidden">
       {/* Top Section - White Background */}
@@ -60,11 +62,10 @@ export default function BeginSection() {
             className="text-center mb-6 md:mb-16"
           >
             <h2 className="text-3xl md:text-5xl font-bold text-navy mb-4">
-              Comience con certeza
+              {t("begin_title")}
             </h2>
             <p className="text-gray-500 text-sm md:text-base max-w-2xl mx-auto">
-              Antes de aplicar, realizamos un diagnóstico profundo para asegurar
-              que su caso sea exitoso.
+              {t("begin_description")}
             </p>
           </motion.div>
 
@@ -102,9 +103,7 @@ export default function BeginSection() {
                   <FileText size={40} strokeWidth={1.5} />
                 </div>
                 <h4 className="font-semibold text-navy text-sm md:text-base leading-tight">
-                  Revisión de su
-                  <br />
-                  expediente migratorio
+                  {t("begin_step_1_title")}
                 </h4>
               </motion.div>
 
@@ -123,9 +122,7 @@ export default function BeginSection() {
                   <Shield size={40} strokeWidth={1.5} />
                 </div>
                 <h4 className="font-semibold text-navy text-sm md:text-base leading-tight">
-                  Revisión de sus
-                  <br />
-                  antecedentes penales
+                  {t("begin_step_2_title")}
                 </h4>
               </motion.div>
 
@@ -146,9 +143,7 @@ export default function BeginSection() {
                   </span>
                 </div>
                 <h4 className="font-semibold text-navy text-sm md:text-base leading-tight">
-                  Revisión de sus aspectos
-                  <br />
-                  contributivos con el IRS
+                  {t("begin_step_3_title")}
                 </h4>
               </motion.div>
             </motion.div>
@@ -162,7 +157,7 @@ export default function BeginSection() {
               className="text-center space-y-6"
             >
               <p className="text-navy font-semibold text-lg">
-                Costo de investigación integral desde:{" "}
+                {t("begin_cost_text")}{" "}
                 <span className="font-bold">$800</span>
               </p>
               <motion.div
@@ -173,12 +168,11 @@ export default function BeginSection() {
                   onClick={() => setIsModalOpen(true)}
                   className="bg-navy hover:bg-navy-dark text-white rounded-full px-12 py-6 text-base font-medium min-w-[240px]"
                 >
-                  Agendar consulta
+                  {t("services_button")}
                 </Button>
               </motion.div>
               <p className="text-gray-400 text-xs italic max-w-lg mx-auto">
-                Este análisis es indispensable para recomendar el paquete de
-                naturalización adecuado.
+                {t("begin_footer_text")}
               </p>
             </motion.div>
           </div>
@@ -194,7 +188,7 @@ export default function BeginSection() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
-              Nuestros Paquetes
+              {t("package_title")}
             </h2>
           </motion.div>
 
@@ -213,11 +207,10 @@ export default function BeginSection() {
               className="border border-white/20 rounded-2xl p-8 bg-[#1e2345] hover:bg-[#252b50] transition-colors relative group"
             >
               <h3 className="text-white text-lg font-bold mb-4 leading-snug min-h-[56px] flex items-center justify-center text-center">
-                Naturalización
-                <br />+ Plan de Pago
+                {t("package_1_name")}
               </h3>
               <div className="text-center mb-8">
-                <span className="text-white/60 text-sm">Desde</span>
+                <span className="text-white/60 text-sm">{t("package_from")}</span>
                 <div className="text-4xl font-bold text-white mt-1">$1,100</div>
               </div>
               <motion.div whileTap={{ scale: 0.95 }}>
@@ -231,11 +224,11 @@ export default function BeginSection() {
               <ul className="space-y-3 text-xs md:text-sm text-gray-300 text-left">
                 <li className="flex items-start gap-2">
                   <span className="text-accent mt-0.5 min-w-[6px]">▪</span>{" "}
-                  Solicitud de inmigración.
+                  {t("package_1_item_1")}
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-accent mt-0.5 min-w-[6px]">▪</span>{" "}
-                  Coordinación de plan de pago con IRS.
+                  {t("package_1_item_2")}
                 </li>
               </ul>
             </motion.div>
@@ -252,15 +245,14 @@ export default function BeginSection() {
                   transition={{ repeat: Infinity, duration: 2 }}
                   className="bg-[#1a1f3d] text-white text-[10px] uppercase font-bold px-3 py-1 rounded-full border border-gray-600 shadow-xl tracking-wider inline-block"
                 >
-                  Más Popular
+                  {t("package_2_popular")}
                 </motion.span>
               </div>
               <h3 className="text-white text-lg font-bold mb-4 leading-snug min-h-[56px] flex items-center justify-center text-center">
-                Naturalización
-                <br />+ Análisis financiero
+                {t("package_2_name")}
               </h3>
               <div className="text-center mb-8">
-                <span className="text-white/60 text-sm">Desde</span>
+                <span className="text-white/60 text-sm">{t("package_from")}</span>
                 <div className="text-4xl font-bold text-white mt-1">$1,800</div>
               </div>
               <motion.div whileTap={{ scale: 0.95 }}>
@@ -274,11 +266,11 @@ export default function BeginSection() {
               <ul className="space-y-3 text-xs md:text-sm text-gray-300 text-left">
                 <li className="flex items-start gap-2">
                   <span className="text-accent mt-0.5 min-w-[6px]">▪</span>{" "}
-                  Solicitud de inmigración.
+                  {t("package_2_item_1")}
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-accent mt-0.5 min-w-[6px]">▪</span>{" "}
-                  coordinación de plan de pago parcial con IRS (Si, califica).
+                  {t("package_2_item_2")}
                 </li>
               </ul>
             </motion.div>
@@ -290,11 +282,10 @@ export default function BeginSection() {
               className="border border-white/20 rounded-2xl p-8 bg-[#1e2345] hover:bg-[#252b50] transition-colors"
             >
               <h3 className="text-white text-lg font-bold mb-4 leading-snug min-h-[56px] flex items-center justify-center text-center">
-                Naturalización
-                <br />+ Protección contra Embargos I
+                {t("package_3_name")}
               </h3>
               <div className="text-center mb-8">
-                <span className="text-white/60 text-sm">Desde</span>
+                <span className="text-white/60 text-sm">{t("package_from")}</span>
                 <div className="text-4xl font-bold text-white mt-1">$1,600</div>
               </div>
               <motion.div whileTap={{ scale: 0.95 }}>
@@ -308,19 +299,18 @@ export default function BeginSection() {
               <ul className="space-y-3 text-xs md:text-sm text-gray-300 text-left">
                 <li className="flex items-start gap-2">
                   <span className="text-accent mt-0.5 min-w-[6px]">▪</span>{" "}
-                  Solicitud de inmigración.
+                  {t("package_3_item_1")}
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-accent mt-0.5 min-w-[6px]">▪</span>{" "}
-                  Protección continua a su cuenta mientras completamos los
-                  requisitos para un plan de pago.
+                  {t("package_3_item_2")}
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-accent mt-0.5 min-w-[6px]">▪</span>{" "}
-                  Coordinación con plan de pago con IRS.
+                  {t("package_3_item_3")}
                 </li>
                 <li className="text-[10px] text-accent mt-4 italic opacity-80">
-                  (No incluye cuota de presentación de $725)
+                  {t("package_3_footer")}
                 </li>
               </ul>
             </motion.div>

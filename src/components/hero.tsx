@@ -3,8 +3,10 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Hero() {
+  const { t } = useLanguage();
   return (
     <section className="bg-navy-gradient pt-4 pb-12 md:pt-20 md:pb-32 lg:pt-24 lg:pb-40 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 lg:px-8">
@@ -53,14 +55,14 @@ export default function Hero() {
                 transition={{ delay: 0.2, type: "spring", stiffness: 120 }}
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
               >
-                Su camino completo a la{" "}
+                {t("hero_title_1")}
                 <motion.span
                   initial={{ color: "#ffffff" }}
                   animate={{ color: "#E9B664" }}
                   transition={{ delay: 1, duration: 0.5 }}
                   className="text-accent inline-block"
                 >
-                  ciudadanía
+                  {t("hero_title_accent")}
                 </motion.span>
               </motion.h1>
               <motion.p
@@ -69,10 +71,7 @@ export default function Hero() {
                 transition={{ delay: 0.4, duration: 1 }}
                 className="text-sm sm:text-base md:text-lg text-gray-200 leading-relaxed max-w-xl mx-auto md:mx-0"
               >
-                No solo tramitamos papeles, lo preparamos para el éxito. La
-                única firma que ofrece verificación de antecedentes penales,
-                asesoría tributaria y preparación completa de ciudadanía y
-                representación legal. Todo en un solo lugar.
+                {t("hero_description")}
               </motion.p>
             </div>
 
@@ -88,7 +87,7 @@ export default function Hero() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Button className="bg-yellow-400 text-[#0B1B3A] hover:bg-yellow-300 font-medium px-6 py-2.5 rounded-full text-sm shadow-md transition-all">
-                  Ver opciones
+                  {t("hero_btn_options")}
                 </Button>
               </motion.div>
 
@@ -100,7 +99,7 @@ export default function Hero() {
                   variant="outline"
                   className="border border-white/40 text-white bg-white/10 hover:bg-white/20 font-medium px-6 py-2.5 rounded-full text-sm backdrop-blur-sm transition-all"
                 >
-                  Consulta gratuita
+                  {t("hero_btn_consult")}
                 </Button>
               </motion.div>
             </motion.div>

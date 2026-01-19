@@ -1,8 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Clock, Phone, Mail } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Footer() {
+  const { t } = useLanguage();
   return (
     <footer className="bg-[#1a1f3d] py-16 border-t border-navy-dark relative overflow-hidden">
       {/* Background Graphic Decoration (Bottom Right) */}
@@ -25,8 +27,7 @@ export default function Footer() {
               />
             </div>
             <p className="leading-relaxed max-w-xs">
-              Construimos el puente entre su residencia permanente y la
-              ciudadanía estadounidense.
+              {t("footer_brand_phrase")}
             </p>
             <p className="pt-4">
               © 2025{" "}
@@ -38,7 +39,7 @@ export default function Footer() {
 
           {/* Contact Column */}
           <div className="space-y-6">
-            <h4 className="text-white text-lg font-medium">Contacto</h4>
+            <h4 className="text-white text-lg font-medium">{t("footer_contact")}</h4>
             <div className="space-y-1">
               <p>401 Broadway, 24th Floor</p>
               <p>New York, NY 10013</p>
@@ -47,7 +48,7 @@ export default function Footer() {
             <div className="space-y-3 pt-2">
               <div className="flex items-start gap-3">
                 <Clock className="w-5 h-5 text-gray-400 flex-shrink-0" />
-                <span>Lun-Vie 9AM-6PM | Sáb con cita previa</span>
+                <span>{t("footer_schedule")}</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-gray-400 flex-shrink-0" />
@@ -64,7 +65,7 @@ export default function Footer() {
 
           {/* Services Column 1 */}
           <div className="space-y-6">
-            <h4 className="text-white text-lg font-medium">Servicios</h4>
+            <h4 className="text-white text-lg font-medium">{t("footer_services")}</h4>
             <ul className="space-y-3">
               {[1, 2, 3, 4].map((i) => (
                 <li key={i}>
@@ -78,7 +79,7 @@ export default function Footer() {
 
           {/* Services Column 2 */}
           <div className="space-y-6">
-            <h4 className="text-white text-lg font-medium">Servicios</h4>
+            <h4 className="text-white text-lg font-medium">{t("footer_services")}</h4>
             <ul className="space-y-3">
               {[1, 2, 3, 4].map((i) => (
                 <li key={i}>

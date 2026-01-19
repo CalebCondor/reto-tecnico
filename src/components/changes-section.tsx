@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ChangesSection() {
+  const { t } = useLanguage();
   return (
     <section className="py-16 md:py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
@@ -16,7 +18,7 @@ export default function ChangesSection() {
             transition={{ type: "spring", stiffness: 100 }}
             className="text-3xl md:text-4xl lg:text-5xl font-bold text-navy"
           >
-            Nuevas reglas más estrictas requieren cambios
+            {t("changes_main_title")}
           </motion.h2>
         </div>
 
@@ -32,17 +34,16 @@ export default function ChangesSection() {
             {/* Text Content */}
             <div className="order-2 lg:order-1">
               <span className="inline-block bg-navy text-white px-6 py-2 rounded-full text-sm font-bold mb-6">
-                La Situacion Actual
+                {t("changes_current_label")}
               </span>
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-6 leading-tight">
-                La mayoría de firmas solo presentan solicitudes. Luego descubre
-                problemas:
+                {t("changes_current_title")}
               </h3>
               <ul className="space-y-3 mb-8">
                 {[
-                  "Récords criminales ocultos",
-                  "Impuestos sin pagar",
-                  "Exámenes de ciudadanía reprobados",
+                  t("changes_current_item_1"),
+                  t("changes_current_item_2"),
+                  t("changes_current_item_3"),
                 ].map((item, i) => (
                   <motion.li
                     key={i}
@@ -59,9 +60,9 @@ export default function ChangesSection() {
                 ))}
               </ul>
               <div className="flex flex-wrap gap-2 text-base md:text-lg">
-                <span className="text-gray-400 font-bold">Resultado:</span>
+                <span className="text-gray-400 font-bold">{t("changes_result_label")}</span>
                 <span className="text-red-500 font-bold">
-                  Solicitud negada, tiempo y dinero perdido
+                  {t("changes_result_text")}
                 </span>
               </div>
             </div>
@@ -108,17 +109,17 @@ export default function ChangesSection() {
             {/* Text Content */}
             <div className="order-2">
               <span className="inline-block bg-accent text-navy px-6 py-2 rounded-full text-sm font-bold mb-6">
-                Nuestra Solución
+                {t("changes_solution_label")}
               </span>
               <h3 className="text-xl md:text-2xl font-bold text-navy mb-6">
-                Lo preparamos ANTES de solicitar:
+                {t("changes_solution_title")}
               </h3>
               <ul className="space-y-3">
                 {[
-                  "Corregir problemas temprano",
-                  "Sin sorpresas",
-                  "Tasas de aprobación más altas",
-                  "Ciudadanía con confianza",
+                  t("changes_solution_item_1"),
+                  t("changes_solution_item_2"),
+                  t("changes_solution_item_3"),
+                  t("changes_solution_item_4"),
                 ].map((item, i) => (
                   <motion.li
                     key={i}

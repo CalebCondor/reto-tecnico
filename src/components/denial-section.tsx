@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function DenialSection() {
+  const { t } = useLanguage();
   return (
     <section className="py-8 md:py-24 px-4 bg-primary text-white overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
@@ -18,10 +20,7 @@ export default function DenialSection() {
             className="w-full text-center space-y-4 px-4"
           >
             <h2 className="text-2xl sm:text-3xl font-bold leading-tight">
-              Cada año, más de 100,000
-              <br />
-              Solicitudes de ciudadanía son
-              <br />
+              {t("denial_title_1")}
               <motion.span
                 initial={{ color: "#ffffff", scale: 1 }}
                 whileInView={{ color: "#ef4444", scale: [1, 1.1, 1] }}
@@ -33,14 +32,11 @@ export default function DenialSection() {
                 }}
                 className="inline-block text-red-500"
               >
-                DENEGADAS
+                {t("denial_title_accent")}
               </motion.span>
             </h2>
             <p className="text-gray-300 text-xs sm:text-sm leading-relaxed max-w-md mx-auto">
-              Las restricciones son mayores cada año: Muchas solicitudes son
-              denegadas por fallar en el examen, no poder probar buen carácter
-              moral (DUI, delitos menores, deudas de pensiones alimenticias,
-              deudas con el IRS)
+              {t("denial_description")}
             </p>
           </motion.div>
 
@@ -113,10 +109,7 @@ export default function DenialSection() {
             className="w-1/2 text-center space-y-6"
           >
             <h2 className="text-4xl lg:text-5xl font-bold leading-tight">
-              Cada año, más de 100,000
-              <br />
-              Solicitudes de ciudadanía son
-              <br />
+              {t("denial_title_1")}
               <motion.span
                 initial={{ color: "#ffffff", scale: 1 }}
                 whileInView={{ color: "#ef4444", scale: [1, 1.1, 1] }}
@@ -128,14 +121,11 @@ export default function DenialSection() {
                 }}
                 className="inline-block text-red-500"
               >
-                DENEGADAS
+                {t("denial_title_accent")}
               </motion.span>
             </h2>
             <p className="text-gray-300 text-base leading-relaxed max-w-2xl mx-auto">
-              Las restricciones son mayores cada año: Muchas solicitudes son
-              denegadas por fallar en el examen, no poder probar buen carácter
-              moral (DUI, delitos menores, deudas de pensiones alimenticias,
-              deudas con el IRS)
+              {t("denial_description")}
             </p>
           </motion.div>
 

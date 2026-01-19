@@ -4,6 +4,7 @@ import { X, Phone, MessageCircle } from "lucide-react";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -11,6 +12,7 @@ interface ContactModalProps {
 }
 
 export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
+  const { t } = useLanguage();
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -54,8 +56,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             {/* Title */}
             <div className="text-center mb-10">
               <h2 className="text-2xl md:text-3xl font-medium text-white leading-tight max-w-2xl mx-auto">
-                Para comenzar o si tiene preguntas sobre que opción es la
-                adecuada para su caso:
+                {t("contact_modal_title")}
               </h2>
             </div>
 
@@ -66,13 +67,13 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 whileHover={{ scale: 1.05 }}
                 className="border border-white/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center h-full hover:bg-white/5 transition-colors"
               >
-                <span className="text-white text-lg mb-6">Llámenos al</span>
+                <span className="text-white text-lg mb-6">{t("contact_modal_call_label")}</span>
                 <Button className="w-full bg-[#ffc107] hover:bg-[#ffb300] text-navy font-bold rounded-full py-6 text-lg mb-4">
                   (787) 555-5555
                 </Button>
                 <div className="text-white/90 text-sm leading-tight">
-                  <p>Lunes a Viernes</p>
-                  <p>de 8am a 6pm EST</p>
+                  <p>{t("contact_modal_schedule_days")}</p>
+                  <p>{t("contact_modal_schedule_hours")}</p>
                 </div>
               </motion.div>
 
@@ -81,7 +82,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 whileHover={{ scale: 1.05 }}
                 className="border border-white/20 rounded-3xl p-8 flex flex-col items-center justify-center text-center h-full hover:bg-white/5 transition-colors"
               >
-                <span className="text-white text-lg mb-6">Escríbanos por</span>
+                <span className="text-white text-lg mb-6">{t("contact_modal_write_label")}</span>
                 <Button className="w-full bg-[#25D366] hover:bg-[#1faa52] text-white font-bold rounded-full py-6 text-lg mb-4 flex items-center justify-center gap-2">
                   <MessageCircle className="w-6 h-6 fill-current" />
                   WhatsApp
@@ -95,9 +96,9 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
             {/* Footer Link */}
             <div className="text-center">
               <p className="text-white text-sm md:text-base">
-                Contáctenos via chat haciendo{" "}
+                {t("contact_modal_chat_text")}
                 <button className="text-[#ffc107] underline underline-offset-4 hover:text-[#ffb300] font-medium transition-colors">
-                  click aquí
+                  {t("contact_modal_chat_link")}
                 </button>
               </p>
             </div>
